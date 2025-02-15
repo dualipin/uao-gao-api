@@ -1,0 +1,62 @@
+# Python
+*.py[cod]
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+bin/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+venv/
+.env/
+
+# Django
+*.log
+db.sqlite3
+media/
+static/
+local_settings.py
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+
+# Environment variables
+.env
+.env.local
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# Temporary files
+*.swp
+*~
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Migration files
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# Database backups
+*.dump
+
+# Documentation
+docs/_build/
