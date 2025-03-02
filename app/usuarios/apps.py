@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class MateriasConfig(AppConfig):
+class CalificacionesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'app.materias'
+    name = 'app.usuarios'
