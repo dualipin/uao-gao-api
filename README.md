@@ -1,130 +1,45 @@
-# GradePay
+# UAO Backend
 
+## Description
 
+This project is an academic and administrative management system built with Django REST framework. It leverages Django's high-level Python web framework to facilitate rapid development and clean, pragmatic design. The system includes features such as user authentication, course management, student records, and an admin interface, all provided by Django's "batteries-included" philosophy.
 
-## Diagrama de Entidad-Relación
+## Installation Process
 
-```mermaid
-erDiagram
-    Persona {
-        string nombre
-        string apellido_paterno
-        string apellido_materno
-        date fecha_nacimiento
-        string sexo
-        string correo
-        string telefono
-        boolean activo
-    }
+To get the UAO Backend project up and running on your local machine, follow these steps:
 
-    Estudiante {
-        int id PK
-        Persona p FK
-        Carrera c FK
-        string matricula UK
-        string domicilio
-    }
+1. **Create and activate a virtual environment:**
 
-    Docente {
-        int id PK
-        string rfc UK
-        Persona p FK
-    }
+   ```bash
+   python -m venv env
+   source env/bin/activate  # On Windows use `env\Scripts\activate`
+   ```
 
-    Carrera {
-        int id PK
-        string clave
-        string nombre
-    }
+2. **Install the required dependencies:**
 
-    Materia {
-        int id PK
-        string clave
-        string nombre
-        int semestre
-        int creditos
-        Carrera c FK
-    }
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-    MateriaCalificacion {
-        int id PK
-        float calificacion
-        Estudiante e FK
-        Materia m FK
-        Docente d FK
-    }
+3. **Apply the database migrations:**
 
-```
-```
-GradePay-back
-├─ app
-│  ├─ calificaciones
-│  │  ├─ admin.py
-│  │  ├─ apps.py
-│  │  ├─ migrations
-│  │  │  └─ __init__.py
-│  │  ├─ models.py
-│  │  ├─ tests.py
-│  │  ├─ views.py
-│  │  └─ __init__.py
-│  ├─ carreras
-│  │  ├─ admin.py
-│  │  ├─ apps.py
-│  │  ├─ migrations
-│  │  │  └─ __init__.py
-│  │  ├─ models.py
-│  │  ├─ tests.py
-│  │  ├─ views.py
-│  │  └─ __init__.py
-│  ├─ docentes
-│  │  ├─ admin.py
-│  │  ├─ apps.py
-│  │  ├─ migrations
-│  │  │  └─ __init__.py
-│  │  ├─ models.py
-│  │  ├─ tests.py
-│  │  ├─ views.py
-│  │  └─ __init__.py
-│  ├─ estudiantes
-│  │  ├─ admin.py
-│  │  ├─ apps.py
-│  │  ├─ migrations
-│  │  │  └─ __init__.py
-│  │  ├─ models.py
-│  │  ├─ tests.py
-│  │  ├─ views.py
-│  │  └─ __init__.py
-│  ├─ materias
-│  │  ├─ admin.py
-│  │  ├─ apps.py
-│  │  ├─ migrations
-│  │  │  └─ __init__.py
-│  │  ├─ models.py
-│  │  ├─ tests.py
-│  │  ├─ views.py
-│  │  └─ __init__.py
-│  ├─ pagos
-│  │  ├─ admin.py
-│  │  ├─ apps.py
-│  │  ├─ migrations
-│  │  │  └─ __init__.py
-│  │  ├─ models.py
-│  │  ├─ tests.py
-│  │  ├─ views.py
-│  │  └─ __init__.py
-│  └─ __init__.py
-├─ config
-│  ├─ asgi.py
-│  ├─ settings.py
-│  ├─ urls.py
-│  ├─ wsgi.py
-│  └─ __init__.py
-├─ manage.py
-├─ README.md
-├─ requirements.txt
-└─ shared
-   └─ models
-      ├─ persona.py
-      └─ __init__.py
+   ```bash
+   python manage.py migrate
+   ```
 
-```
+4. **Create a superuser to access the admin interface:**
+
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+5. **Run the development server:**
+
+   ```bash
+   python manage.py runserver
+   ```
+
+6. **Access the application:**
+   Open your web browser and go to `http://127.0.0.1:8000/`.
+
+Now you should have the UAO Backend project running locally.
