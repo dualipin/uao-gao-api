@@ -9,8 +9,9 @@ from utils import generar_matricula
 class Alumno(Persona):
     matricula = models.CharField(max_length=20, blank=True, unique=True)
     semestre = models.IntegerField(default=1, blank=True)
-    fecha_ingreso = models.DateField(auto_now=True)
+    fecha_ingreso = models.DateField()
     carrera = models.ForeignKey(Carrera, on_delete=models.CASCADE)
+    dia = models.CharField(max_length=100, blank=True, default="")
 
     class Meta:
         verbose_name = "Alumno"

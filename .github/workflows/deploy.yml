@@ -1,0 +1,26 @@
+name: Deploy to server
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Deploy
+        uses: easingthemes/ssh-deploy@v2.1.1
+        with:
+          server: ${{ secrets.SERVER }}
+          remote_port: ${{ secrets.REMOTE_PORT }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          local: 'build'
+          remote: '/var/www/html'
+          args: '-avz --delete'

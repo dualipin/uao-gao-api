@@ -16,3 +16,7 @@ class BecaViewSet(ModelViewSet):
 class AlumnoBecaViewSet(ModelViewSet):
     serializer_class = AlumnoBecaSerializer
     queryset = AlumnoBeca.objects.all()
+
+    def get(self, request, *args, **kwargs):
+
+        return self.list(request, *args, **kwargs)

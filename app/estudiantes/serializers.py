@@ -11,6 +11,7 @@ class AlumnoSerializer(ModelSerializer):
         def to_representation(self, instance: Alumno):
             rep = super().to_representation(instance)
             rep["carrera"] = instance.carrera.nombre
+            # rep["semestre"] = instance.semestre
             rep["becas"] = AlumnoBecaSerializer(instance.becas, many=True).data
             return rep
 

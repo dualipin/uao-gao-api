@@ -16,6 +16,11 @@ class Concepto(models.Model):
 
 
 class Pago(models.Model):
+    TIPO_PAGO = (
+        ("E", "Efectivo"),
+        ("T", "Transferencia"),
+    )
+
     folio = models.AutoField(
         unique=True,
         primary_key=True,
@@ -28,13 +33,14 @@ class Pago(models.Model):
         default=uuid.uuid4,
     )
     alumno = models.ForeignKey(Alumno, on_delete=models.CASCADE, related_name="pagos")
-    fecha = models.DateField(auto_now=True)
+    fecha = models.DateField(auto_now_add=True)
     monto = models.DecimalField(max_digits=10, decimal_places=2)
     concepto = models.ForeignKey(Concepto, on_delete=models.CASCADE)
     recibe = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     comentarios = models.TextField(blank=True, null=True)
     creado = models.DateTimeField(auto_now_add=True)
     modificado = models.DateTimeField(auto_now=True)
+    tipo = models.CharField(max_length=1, choices=TIPO_PAGO, default="E")
 
     class Meta:
         verbose_name = "Pago"
