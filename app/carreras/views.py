@@ -9,4 +9,4 @@ class CarreraViewSet(ModelViewSet):
     serializer_class = CarreraSerializer
     queryset = Carrera.objects.all()
 
-    permission_classes = [AllowAny]
+    permission_classes = [AllowAny, ReadOnly]
