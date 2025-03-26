@@ -11,6 +11,8 @@ class UsuarioManager(BaseUserManager):
     def create_user(self, username, password=None, **extra_fields):
         if not username:
             raise ValueError("El usuario debe tener un nombre de usuario")
+        if not password:
+            raise ValueError("El usuario debe tener una contraseña")
         usuario = self.model(username=username, **extra_fields)
         usuario.set_password(password)
         usuario.save()
@@ -32,7 +34,7 @@ class Usuario(AbstractBaseUser, Persona, PermissionsMixin):
     objects = UsuarioManager()
 
     USERNAME_FIELD = "username"
-    REQUIRED_FIELDS = ["nombres", "apellidos"]
+    REQUIRED_FIELDS = ["nombres"]
 
     def __str__(self):
-        return f"{self.username} - {self.nombres} {self.apellidos}"
+        return f"{self.username} - {self.nombres} {self.apellido_paterno} {self.apellido_materno}"

@@ -30,13 +30,14 @@ SECRET_KEY = env("SECRET_KEY", cast=str)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = ["localhost", "192.168.8.11", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "192.168.8.11", "127.0.0.1", "192.168.162.228"]
 
 # Application definition
 
 INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
+    "rest_framework_simplejwt.token_blacklist",
     "corsheaders",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     "app.estudiantes",
     "app.usuarios",
     "app.pagos",
+    "app.domicilios",
 ]
 
 REST_FRAMEWORK = {
@@ -72,6 +74,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://192.168.8.11:5173",
+    "http://192.168.162.228:5173",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -102,10 +105,8 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": env("DB_NAME"),
-        "USER": env("DB_USER"),
-        "PASSWORD": env("DB_PASS"),
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 

@@ -17,13 +17,18 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenBlacklistView,
+)
 
 url_api = [
     path("", include("app.pagos.urls")),
     path("", include("app.estudiantes.urls")),
     path("", include("app.carreras.urls")),
     path("", include("app.usuarios.urls")),
+    path("", include("app.domicilios.urls")),
 ]
 
 urlpatterns = [
@@ -31,4 +36,5 @@ urlpatterns = [
     path("api/", include(url_api)),
     path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/token/logout/", TokenBlacklistView.as_view(), name="token_blacklist"),
 ]

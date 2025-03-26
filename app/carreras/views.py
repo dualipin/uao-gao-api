@@ -8,5 +8,3 @@ from shared.permissions.custom_permissions import ReadOnly
 class CarreraViewSet(ModelViewSet):
     serializer_class = CarreraSerializer
     queryset = Carrera.objects.all()
-
-    permission_classes = [AllowAny, ReadOnly]

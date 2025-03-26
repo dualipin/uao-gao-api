@@ -17,9 +17,9 @@ class PagoSerializer(ModelSerializer):
     def to_representation(self, instance: Pago):
         rep = super().to_representation(instance)
         rep["matricula"] = instance.alumno.matricula
-        rep["alumno"] = f"{instance.alumno.nombres} {instance.alumno.apellidos}"
+        rep["alumno"] = f"{instance.alumno.nombres}"
         rep["semestre"] = instance.alumno.semestre
         rep["carrera"] = instance.alumno.carrera.nombre
         rep["concepto"] = instance.concepto.nombre
-        rep["recibe"] = f"{instance.recibe.nombres} {instance.recibe.apellidos}"
+        rep["recibe"] = f"{instance.recibe.nombres}"
         return rep
